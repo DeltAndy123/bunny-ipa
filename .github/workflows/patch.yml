@@ -25,7 +25,8 @@ jobs:
           sudo apt update
           sudo apt install libplist-utils xmlstarlet libxml2-utils -y
           git clone https://github.com/Al4ise/Azule.git ~/Azule
-          sudo ln -sf ~/Azule/azule /usr/local/bin/azule
+          cd ~/Azule
+          git checkout 27c02b415cff15b1c131a0e95bcc2438023f86da # For some reason, latest version doesn't work
 
       - name: Download IPA
         run: wget ${{ github.event.inputs.url }} -O discord.ipa
@@ -51,7 +52,7 @@ jobs:
         run: bun run patch.ts
 
       - name: Inject Sunset and Orion
-        run: ~/Azule/azule -i Patched.ipa -o Sunset.ipa -f sunset.deb orion.deb sideloadfix.deb
+        run: ~/Azule/azule -U -i Patched.ipa -f sunset.deb orion.deb sideloadfix.deb -o Sunset.ipa
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
