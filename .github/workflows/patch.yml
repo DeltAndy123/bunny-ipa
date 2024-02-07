@@ -17,6 +17,9 @@ jobs:
         with:
           bun-version: latest
 
+      - name: Install Bun dependencies
+        run: bun install
+
       - name: Install Azule
         run: |
           git clone https://github.com/Al4ise/Azule.git ~/Azule
