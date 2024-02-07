@@ -49,7 +49,7 @@ jobs:
         run: bun run patch.ts
 
       - name: Inject Sunset and Orion
-        run: ./Azule/azule -i Patched.ipa -o Sunset.ipa -f sunset.deb orion.deb sideloadfix.deb
+        run: ~/Azule/azule -i Patched.ipa -o Sunset.ipa -f sunset.deb orion.deb sideloadfix.deb
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
