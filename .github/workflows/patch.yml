@@ -31,12 +31,12 @@ jobs:
       - name: Download IPA
         run: wget ${{ github.event.inputs.url }} -O discord.ipa
 
-      - name: Download Sunset
+      - name: Download Revenge
         run: |
-          wget https://nightly.link/sunset-mod/SunsetTweak/workflows/build/main/Package%20built%20by%20macos-latest.zip -O sunset.zip
-          unzip sunset.zip -d sunset
-          mv sunset/*.deb sunset.deb
-          rm -rf sunset sunset.zip
+          wget https://nightly.link/DeltAndy123/RevengeTweak/workflows/build/main/Package%20built%20by%20macos-latest.zip -O revenge.zip
+          unzip revenge.zip -d revenge
+          mv revenge/*.deb revenge.deb
+          rm -rf revenge revenge.zip
 
       - name: Download Orion
         run: |
@@ -51,11 +51,11 @@ jobs:
       - name: Patch IPA icons and name
         run: bun run patch.ts
 
-      - name: Inject Sunset and Orion
-        run: ~/Azule/azule -U -i Patched.ipa -f sunset.deb orion.deb sideloadfix.deb -o . -n Sunset
+      - name: Inject Revenge and Orion
+        run: ~/Azule/azule -U -i Patched.ipa -f revenge.deb orion.deb sideloadfix.deb -o . -n Revenge
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Sunset.ipa
-          path: Sunset.ipa
+          name: Revenge
+          path: Revenge.ipa
