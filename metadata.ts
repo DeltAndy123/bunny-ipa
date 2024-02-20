@@ -5,5 +5,5 @@ const infoPlist = Plist.parse(readFileSync("discord/Payload/Discord.app/Info.pli
 
 console.log(JSON.stringify({
   name: infoPlist.CFBundleName,
-  version: infoPlist.CFBundleVersion
+  version: infoPlist.CFBundleShortVersionString
 }));
