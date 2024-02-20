@@ -1,3 +1,5 @@
+name: Patch Discord
+
 on:
   workflow_dispatch:
     inputs:
@@ -58,6 +60,7 @@ jobs:
         run: |
           metadata=$(bun run metadata.ts | jq)
           echo "discord_version=$(echo $metadata | jq -r .version)" >> $GITHUB_ENV
+          echo "discord_build=$(echo $metadata | jq -r .build)" >> $GITHUB_ENV
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
@@ -69,7 +72,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: Revenge.ipa
-          tag_name: ${{ env.discord_version }}
-          name: "Revenge ${{ env.discord_version }}"
+          tag_name: ${{ env.discord_build }}
+          name: "Revenge ${{ env.discord_version }} (${{ env.discord_build }})"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
