@@ -54,8 +54,22 @@ jobs:
       - name: Inject Revenge and Orion
         run: ~/Azule/azule -U -i Patched.ipa -f revenge.deb orion.deb sideloadfix.deb -o . -n Revenge
 
+      - name: Get IPA Metadata
+        run: |
+          metadata=$(bun run metadata.ts | jq)
+          discord_version=$(echo $metadata | jq -r .version) >> $GITHUB_ENV
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: Revenge
           path: Revenge.ipa
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: Revenge.ipa
+          tag_name: nightly
+          name: "Revenge ${{ env.discord_version }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

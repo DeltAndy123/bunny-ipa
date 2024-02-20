@@ -1,4 +1,4 @@
-import * as plist from "plist";
+import * as Plist from "plist";
 import AdmZip from "adm-zip";
 import { readFileSync, copyFileSync, writeFileSync, readdirSync } from "fs";
 import consts from "./constants";
@@ -28,7 +28,7 @@ readdirSync("icons").forEach((icon) => {
 console.log("Added icons to Payload/Discord.app");
 
 console.log("Modifying Info.plist");
-const infoPlist = plist.parse(readFileSync("discord/Payload/Discord.app/Info.plist", "utf8")) as {[key: string]: any};
+const infoPlist = Plist.parse(readFileSync("discord/Payload/Discord.app/Info.plist", "utf8")) as {[key: string]: any};
 console.log(`Renaming app to '${consts.MOD_NAME}'`)
 infoPlist.CFBundleName = consts.MOD_NAME;
 infoPlist.CFBundleDisplayName = consts.MOD_NAME;
@@ -41,7 +41,7 @@ console.log("Enabling viewing Documents folder in Files app");
 infoPlist.UISupportsDocumentBrowser = true;
 infoPlist.UIFileSharingEnabled = true;
 
-const modifiedInfoPlist = plist.build(infoPlist);
+const modifiedInfoPlist = Plist.build(infoPlist);
 writeFileSync("discord/Payload/Discord.app/Info.plist", modifiedInfoPlist);
 console.log("Modified Info.plist");
 

@@ -1,15 +1,6 @@
-# sunset-ipa
+# Revenge IPA
+A GitHub Actions script to automatically patch Discord IPAs with [Revenge](https://github.com/revenge-mod/)
 
-To install dependencies:
 
-```bash
-bun install
-```
-
-To run:
-
-```bash
-bun run src/patch.ts
-```
-
-This project was created using `bun init` in bun v1.0.13. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+## How to Install
+Download the IPA in [releases](https://github.com/DeltAndy123/revenge-ipa/releases), then sideload it with [Sideloadly](https://sideloadly.io/), [Scarlet](https://usescarlet.com/), [TrollStore](https://ios.cfw.guide/installing-trollstore/), etc
