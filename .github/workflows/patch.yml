@@ -57,7 +57,7 @@ jobs:
       - name: Get IPA Metadata
         run: |
           metadata=$(bun run metadata.ts | jq)
-          discord_version=$(echo $metadata | jq -r .version) >> $GITHUB_ENV
+          echo "discord_version=$(echo $metadata | jq -r .version)" >> $GITHUB_ENV
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
@@ -69,7 +69,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: Revenge.ipa
-          tag_name: nightly
+          tag_name: ${{ env.discord_version }}
           name: "Revenge ${{ env.discord_version }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
