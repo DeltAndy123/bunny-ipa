@@ -34,11 +34,7 @@ jobs:
         run: wget ${{ github.event.inputs.url }} -O discord.ipa
 
       - name: Download Revenge
-        run: |
-          wget https://nightly.link/DeltAndy123/RevengeTweak/workflows/build/main/Package%20built%20by%20macos-latest.zip -O revenge.zip
-          unzip revenge.zip -d revenge
-          mv revenge/*.deb revenge.deb
-          rm -rf revenge revenge.zip
+        run: wget https://github.com/DeltAndy123/RevengeTweak/releases/download/nightly/dev.beefers.revenge_0.0.2_iphoneos-arm.deb -O revenge.deb
 
       - name: Download Orion
         run: |
