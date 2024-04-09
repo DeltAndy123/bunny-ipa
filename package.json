@@ -1,5 +1,5 @@
 {
-  "name": "revenge-ipa",
+  "name": "pyoncord-ipa",
   "type": "module",
   "module": "patch.ts",
   "devDependencies": {
