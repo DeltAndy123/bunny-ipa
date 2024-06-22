@@ -1,6 +1,6 @@
 export default {
-  MOD_NAME: "Pyoncord",
+  MOD_NAME: "Bunny",
   ICON_NAME: "PyoncordIcon",
-  ICON_FILES: ["PyoncordIcon60x60"],
-  ICON_FILES_IPAD: ["PyoncordIcon60x60", "PyoncordIcon76x76"],
+  ICON_FILES: ["BunnyIcon60x60"],
+  ICON_FILES_IPAD: ["BunnyIcon60x60", "BunnyIcon76x76"],
 } as const;

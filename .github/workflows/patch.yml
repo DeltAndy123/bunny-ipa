@@ -33,8 +33,8 @@ jobs:
       - name: Download IPA
         run: wget ${{ github.event.inputs.url }} -O discord.ipa
 
-      - name: Download Pyoncord
-        run: wget https://github.com/pyoncord/PyoncordTweak/releases/download/v223.0/io.github.pyoncord.app_0.1.0_iphoneos-arm.deb -O pyoncord.deb
+      - name: Download Bunny
+        run: wget https://github.com/pyoncord/BunnyTweak/releases/download/v230.0/io.github.pyoncord.app_0.3.0_iphoneos-arm.deb -O bunny.deb
 
       - name: Download Orion
         run: |
@@ -49,8 +49,8 @@ jobs:
       - name: Patch IPA icons and name
         run: bun run patch.ts
 
-      - name: Inject Pyoncord and Orion
-        run: ~/Azule/azule -U -i Patched.ipa -f pyoncord.deb orion.deb sideloadfix.deb -o . -n Pyoncord
+      - name: Inject Bunny and Orion
+        run: ~/Azule/azule -U -i Patched.ipa -f bunny.deb orion.deb sideloadfix.deb -o . -n Bunny
 
       - name: Get IPA Metadata
         run: |
@@ -61,14 +61,14 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Pyoncord
-          path: Pyoncord.ipa
+          name: Bunny
+          path: Bunny.ipa
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          files: Pyoncord.ipa
+          files: Bunny.ipa
           tag_name: ${{ env.discord_build }}
-          name: "Pyoncord ${{ env.discord_version }} (${{ env.discord_build }})"
+          name: "Bunny ${{ env.discord_version }} (${{ env.discord_build }})"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
